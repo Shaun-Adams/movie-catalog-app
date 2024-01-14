@@ -1,9 +1,12 @@
-// Register.js
+// components/Register.js
 
 import React, { useState } from 'react';
-import { supabase } from './supabase';
+import { supabase } from '../services/supabaseClient';
+
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const history = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,6 +15,8 @@ const Register = () => {
       const { user, error } = await supabase.auth.signUp({ email, password });
       if (error) throw error;
       console.log('User registered:', user);
+      // history.push('/login');
+      window.location.href = '/login'
     } catch (error) {
       console.error('Registration error:', error.message);
     }
