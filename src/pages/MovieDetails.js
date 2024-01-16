@@ -1,57 +1,31 @@
-// src/pages/MovieDetails.js
+// MovieDetails.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import { fetchMovieById } from '../services/movieService'; // Assume you create this function
+import MovieDetailLayout from '../components/layouts/MovieDetailLayout';
 
 function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
-
+  const [error, setError] = useState(null);
+  
   useEffect(() => {
-    const fetchMovie = async () => {
-      const response = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=YOUR_API_KEY`);
-      setMovie(response.data);
+    const loadMovieDetails = async () => {
+      try {
+        const movieData = await fetchMovieById(id);
+        setMovie(movieData);
+      } catch (err) {
+        setError(err.message);
+      }
     };
 
-    fetchMovie();
+    loadMovieDetails();
   }, [id]);
 
+  if (error) return <div>Error loading movie details: {error}</div>;
   if (!movie) return <div>Loading...</div>;
 
-  return (
-    <div>
-      <h2>{movie.title}</h2>
-      <p>{movie.overview}</p>
-      <li key={movie.id}>
-            {movie.title},
-            {/* {movie.release_date},
-            {movie.overview},
-            {movie.vote_average},
-            {movie.vote_count},
-            {movie.popularity}, */}
-            {/* {movie.poster_path}, */}
-            {/* {movie.original_language},
-            {movie.original_title},
-            {movie.backdrop_path}, */}
-            {/* {movie.adult},
-            {movie.video},
-            {movie.genre_ids},
-            {movie.media_type}, */}
-            {/* {movie.name}, */}
-            {/* {movie.first_air_date},
-            {movie.origin_country},
-            {movie.original_name},
-            {movie.profile_path},
-            {movie.known_for},
-            {movie.known_for_department}, */}
-            {/* <button onClick={()=>handleClick(movie)}>Details</button> */}
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-            <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
-            {/* <iframe src={`https://video.tmdb.org/t/p/w500${movie.video}`} alt={movie.title} > </iframe> */}
-            {/* <YouTube videoId={movie.video}></YouTube> */}
-          </li>
-    </div>
-  );
+  return <MovieDetailLayout movie={movie} />;
 }
 
 export default MovieDetails;

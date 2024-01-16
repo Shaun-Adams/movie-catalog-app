@@ -1,44 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { fetchMovies } from '../services/movieService';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/styles.css";
 import YouTube from 'react-youtube';
-
+import MovieCard from '../components/MovieCard';
+import MainLayout from '../components/layouts/MainLayout';
+import { Grid } from '@mui/material';
+import SearchBar from '../components/SearchBar';
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
+  const [query, setQuery] = useState('');
+
 
   useEffect(() => {
     const loadMovies = async () => {
       try {
-        const movieData = await fetchMovies();
+        const movieData = await fetchMovies(query);
         setMovies(movieData);
-        console.log("movie-details " + movieData)
       } catch (err) {
         setError(err.message);
       }
     };
 
-    loadMovies();
-  }, []);
+    if (query.length === 0 || query.length > 2) {
+      loadMovies();
+    }
+  }, [query]);
+
+  const handleSearch = (event) => {
+    setQuery(event.target.value); // Update the query state
+  };
 
   if (error) return <div>Error loading movies: {error}</div>;
 
-  return (
-    <div>
-      <h1>Popular Movies</h1>
-      <ul>
-        {movies
-        .map(movie => (
-          <li key={movie.id}>
-            {movie.title},
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-            <img src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt={movie.title} />
-            {/* <YouTube videoId={movie.video}></YouTube> */}
-          </li>
-        ))
-        }
-      </ul>
-    </div>
+ return (
+    <MainLayout onSearch={handleSearch}>
+      <h1>Movies</h1>
+      <Grid container spacing={2}>
+        {movies.length > 0 ? (
+          movies.map((movie) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
+              <MovieCard movie={movie} />
+            </Grid>
+          ))
+        ) : (
+          <div>No movies found</div>
+        )}
+      </Grid>
+    </MainLayout>
   );
 }
 

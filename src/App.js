@@ -14,14 +14,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/movies" element={ <PrivateRoute>       <MovieList />    </PrivateRoute>   }/>
-
-        {/* </Route> */}
-        {/* <Route path="/movies" element={<PrivateRoute />}>
-          <Route path="" element={<MovieList />} />
-          <Route path=":id" element={<MovieDetails />} /> */}
-        {/* </Route> */}
-
+        <Route path="/movies" element={ 
+          <PrivateRoute>       
+            <MovieList />
+          </PrivateRoute>   
+        }/>
+        <Route path="/movie/:id" element={
+          <PrivateRoute>
+            <MovieDetails />
+          </PrivateRoute>
+        }/>
       </Routes>
     </Router>
   );
