@@ -7,29 +7,30 @@ import ProfileButton from './ProfileButton'; // Make sure this is the correct pa
 
 
 const TopNavBar = ({ drawerWidth, handleDrawerToggle , onSearch }) => {
-  return (
-    <AppBar
-      position="fixed"
-      sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
-      }}
-    >
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerToggle}
-          edge="start"
-          sx={{ mr: 2, display: { sm: 'none' } }}
+    return (
+        <AppBar
+            position="fixed"
+            sx={{
+                width: { sm: `calc(100% - ${drawerWidth}px)` },
+                ml: { sm: `${drawerWidth}px` },
+                bgcolor: '#222e50' // Set the background color to #222e50
+            }}
         >
-          <MenuIcon />
-        </IconButton>
-        <SearchBar onSearch={onSearch} />
-        <ProfileButton />
-      </Toolbar>
-    </AppBar>
-  );
+            <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerToggle}
+                    edge="start"
+                    sx={{ mr: 2, display: { sm: 'none' } }}
+                >
+                    <MenuIcon />
+                </IconButton>
+                <SearchBar onSearch={onSearch} />
+                <ProfileButton />
+            </Toolbar>
+        </AppBar>
+    );
 };
 
 export default TopNavBar;

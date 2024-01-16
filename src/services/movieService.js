@@ -26,3 +26,20 @@ export const fetchMovieById = async (id) => {
     throw error;
   }
 };
+
+export const fetchMovieTrailerById = async (id) => {
+  try {
+    // Fetch videos
+    const videosResponse = await axios.get(`${baseUrl}/movie/${id}/videos?api_key=${apiKey}`);
+    const videosData = videosResponse.data.results;
+
+    // Find a trailer video (assuming we are looking for YouTube trailers)
+    const trailer = videosData.find(video => video.site === "YouTube" && video.type === "Trailer");
+
+    return trailer ? trailer.key : null;
+ 
+  } catch (error) {
+    console.error('Error fetching movie by ID:', error);
+    throw error;
+  }
+};

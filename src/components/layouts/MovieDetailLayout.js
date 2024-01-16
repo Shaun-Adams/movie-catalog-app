@@ -1,39 +1,93 @@
-import React from 'react';
-import { Box, Grid, Typography, Container } from '@mui/material';
-// Import your components
+import React, { useState } from 'react';
+import {
+    Box,
+    CssBaseline,
+    Drawer,
+    ThemeProvider,
+    AppBar,
+    Toolbar,
+    IconButton,
+    Grid, // Import Grid
+    Paper, // Import Paper
+} from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ProfileButton from '../ProfileButton'; // Make sure this is the correct path
 import Sidebar from '../Sidebar';
-import ProfileButton from '../ProfileButton';
-// ... other necessary imports
+import theme from './Theme'; // Import the theme
 
-const MovieDetailLayout = ({ movie }) => {
-  // Assume movie object contains all the details including cast and trailer
+const drawerWidth = 240;
 
-  return (
-    <Container maxWidth="lg">
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
-          {/* This could be a video player component */}
-          <Typography variant="h4" gutterBottom>
-            {movie.title}
-          </Typography>
-          <iframe
-            width="100%"
-            height="500px"
-            src={movie.trailerUrl}
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-          {/* ... other movie details and descriptions */}
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Sidebar />
-          <ProfileButton />
-          {/* Carousel for actors */}
-          {/* ... other movie details */}
-        </Grid>
-      </Grid>
-    </Container>
-  );
+const MovieDetailLayout = ({ children }) => {
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
+    return (
+        <ThemeProvider theme={theme}>
+            <Box sx={{ display: 'flex' }}>
+                <CssBaseline />
+                <AppBar
+                    position="fixed"
+                    sx={{
+                        width: { sm: `calc(100% - ${drawerWidth}px)` },
+                        ml: { sm: `${drawerWidth}px` },
+                        bgcolor: '#222e50' // Set the background color to #222e50
+                    }}
+                >
+                    <Toolbar>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerToggle}
+                            edge="start"
+                            sx={{ mr: 2, display: { sm: 'none' } }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        {/* Spacer to push elements to the right */}
+                        <Box sx={{ flexGrow: 1 }} />
+                        <ProfileButton />
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    variant="temporary"
+                    open={mobileOpen}
+                    onClose={handleDrawerToggle}
+                    ModalProps={{ keepMounted: true }}
+                    sx={{
+                        display: { xs: 'block', sm: 'none' },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                    }}
+                >
+                    <Sidebar handleDrawerToggle={handleDrawerToggle} />
+                </Drawer>
+                <Drawer
+                    variant="permanent"
+                    sx={{
+                        display: { xs: 'none', sm: 'block' },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                    }}
+                    open
+                >
+                    <Sidebar />
+                </Drawer>
+                <Box
+                    component="main"
+                    sx={{
+                        flexGrow: 1,
+                        p: 6,
+                        pt: 10,
+                        width: { sm: `calc(100% - ${drawerWidth}px)` },
+                        ml: { sm: `${drawerWidth}px` },
+                    }}
+                >
+                    {children}
+                </Box>
+            </Box>
+        </ThemeProvider>
+    );
 };
 
 export default MovieDetailLayout;
