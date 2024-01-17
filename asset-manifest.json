@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/movie-catalog-app/static/css/main.5b149cd7.css",
-    "main.js": "/movie-catalog-app/static/js/main.ea4d681e.js",
+    "main.js": "/movie-catalog-app/static/js/main.120cdaee.js",
     "static/js/289.f1943dff.chunk.js": "/movie-catalog-app/static/js/289.f1943dff.chunk.js",
     "static/js/787.932ef39f.chunk.js": "/movie-catalog-app/static/js/787.932ef39f.chunk.js",
     "static/media/logo.jpeg": "/movie-catalog-app/static/media/logo.bfeaf2f91389ea2d6c86.jpeg",
     "index.html": "/movie-catalog-app/index.html",
     "main.5b149cd7.css.map": "/movie-catalog-app/static/css/main.5b149cd7.css.map",
-    "main.ea4d681e.js.map": "/movie-catalog-app/static/js/main.ea4d681e.js.map",
+    "main.120cdaee.js.map": "/movie-catalog-app/static/js/main.120cdaee.js.map",
     "289.f1943dff.chunk.js.map": "/movie-catalog-app/static/js/289.f1943dff.chunk.js.map",
     "787.932ef39f.chunk.js.map": "/movie-catalog-app/static/js/787.932ef39f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5b149cd7.css",
-    "static/js/main.ea4d681e.js"
+    "static/js/main.120cdaee.js"
   ]
 }
