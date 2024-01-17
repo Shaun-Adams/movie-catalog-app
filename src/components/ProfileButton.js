@@ -25,7 +25,7 @@ const ProfileButton = ({ user }) => {
                 </>
             ) : (
                 <Button
-                    onClick={() => window.location.href = '/login'}
+                    onClick={() => window.location.href = `${window.location.origin}/movie-catalog-app/login`}
                     color="inherit"
                 >
                     Login
