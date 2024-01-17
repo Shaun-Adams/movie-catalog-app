@@ -1,9 +1,9 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemText, IconButton, Divider, Box, Grid } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite'; 
 import WatchLaterIcon from '@mui/icons-material/WatchLater'; 
+import MovieIcon from '@mui/icons-material/Movie'; 
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.jpeg';
 
@@ -29,7 +29,7 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     minHeight: 64,
                 }}
             >
-                <a href="/movies" style={{ textDecoration: 'none' }}>
+                <a href="https://shaun-adams.github.io/movie-catalog-app/#/movies" style={{ textDecoration: 'none' }}>
                     <img src={logo} alt="Logo" style={{ maxHeight: '50px', borderRadius: '50%' }} />
                 </a>
             </Box>
@@ -41,9 +41,9 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     onClick={() => handleNavigation('/movies')}
                 >
                     <ListItemIcon>
-                        <HomeIcon style={{ color: '#fff' }} />
+                        <MovieIcon style={{ color: '#fff' }} /> {/* Use the MovieIcon */}
                     </ListItemIcon>
-                    <ListItemText primary="Home" />
+                    <ListItemText primary="Movies" />
                 </ListItem>
                 <ListItem
                     button

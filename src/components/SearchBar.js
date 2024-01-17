@@ -7,7 +7,7 @@ const SearchBar = ({ onSearch }) => {
     <Box sx={{ position: 'relative', width: '100%' }}>
       <SearchIcon sx={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }} />
       <InputBase
-        placeholder="Search for movies or TV series"
+        placeholder="Search for movies"
         onChange={onSearch}
         sx={{
           color: 'inherit',
