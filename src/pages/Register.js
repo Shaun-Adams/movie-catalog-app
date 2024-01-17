@@ -79,6 +79,8 @@ function Register() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -89,6 +91,8 @@ function Register() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  value={surname}
+                  onChange={(e) => setSurname(e.target.value)}
                 />
               </Grid>
           </Grid>

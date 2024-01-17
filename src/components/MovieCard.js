@@ -1,18 +1,25 @@
 // MovieCard.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { Card, CardMedia, CardContent, CardActions, Button, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useNavigate, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
-    const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const handleDetailsClick = () => {
-        navigate(`/movie/${movie.id}`);
-    };
+    useEffect(() => {
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        setIsFavorite(favorites.some(fav => fav.id === movie.id));
+    }, [movie.id]);
 
     const handleFavoriteClick = () => {
+        const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        if (isFavorite) {
+            const newFavorites = favorites.filter(fav => fav.id !== movie.id);
+            localStorage.setItem('favorites', JSON.stringify(newFavorites));
+        } else {
+            localStorage.setItem('favorites', JSON.stringify([...favorites, movie]));
+        }
         setIsFavorite(!isFavorite);
     };
 

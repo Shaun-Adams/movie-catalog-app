@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import PrivateRoute from './components/PrivateRoute';
+import Favorites from './pages/Favorites';
 
 function App() {
   return (
@@ -22,6 +23,16 @@ function App() {
           <PrivateRoute>
             <MovieDetails />
           </PrivateRoute>
+        }/>
+        <Route path="/favorites" element={ 
+          <PrivateRoute>       
+            <Favorites />
+          </PrivateRoute>   
+        }/>
+        <Route path="/movies" element={ 
+          <PrivateRoute>       
+            <MovieList />
+          </PrivateRoute>   
         }/>
       </Routes>
     </Router>

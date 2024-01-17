@@ -29,7 +29,9 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     minHeight: 64,
                 }}
             >
-                <img src={logo} alt="Logo" style={{ maxHeight: '50px' }} />
+                <a href="/movies" style={{ textDecoration: 'none' }}>
+                    <img src={logo} alt="Logo" style={{ maxHeight: '50px', borderRadius: '50%' }} />
+                </a>
             </Box>
             <Divider />
             <List>
