@@ -6,7 +6,7 @@ Login with the following details:
 
 Email: ```shaunsiadams@gmail.com```
 
-Password: ```:VWSAU:eX5_LaGz``1
+Password: ```:VWSAU:eX5_LaGz```
 
 
 
