@@ -7,13 +7,11 @@ import {
     AppBar,
     Toolbar,
     IconButton,
-    Grid, // Import Grid
-    Paper, // Import Paper
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import ProfileButton from '../ProfileButton'; // Make sure this is the correct path
+import ProfileButton from '../ProfileButton'; 
 import Sidebar from '../Sidebar';
-import theme from './Theme'; // Import the theme
+import theme from './Theme';
 
 const drawerWidth = 240;
 
@@ -33,7 +31,7 @@ const MovieDetailLayout = ({ children }) => {
                     sx={{
                         width: { sm: `calc(100% - ${drawerWidth}px)` },
                         ml: { sm: `${drawerWidth}px` },
-                        bgcolor: '#222e50' // Set the background color to #222e50
+                        bgcolor: '#222e50'
                     }}
                 >
                     <Toolbar>
@@ -46,7 +44,6 @@ const MovieDetailLayout = ({ children }) => {
                         >
                             <MenuIcon />
                         </IconButton>
-                        {/* Spacer to push elements to the right */}
                         <Box sx={{ flexGrow: 1 }} />
                         <ProfileButton />
                     </Toolbar>

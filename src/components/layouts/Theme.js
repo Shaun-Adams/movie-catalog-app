@@ -1,4 +1,3 @@
-// theme.js
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -29,7 +28,6 @@ const theme = createTheme({
       secondary: '#0D1F2D', // Dark Navy Blue
     },
   },
-  // Other customizations can go here
 });
 
 export default theme;

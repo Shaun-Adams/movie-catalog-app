@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { fetchMovies } from '../services/movieService';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/styles.css";
-import YouTube from 'react-youtube';
 import MovieCard from '../components/MovieCard';
 import MainLayout from '../components/layouts/MainLayout';
 import { Grid } from '@mui/material';
-import SearchBar from '../components/SearchBar';
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -30,7 +28,7 @@ function MovieList() {
   }, [query]);
 
   const handleSearch = (event) => {
-    setQuery(event.target.value); // Update the query state
+    setQuery(event.target.value); 
   };
 
   if (error) return <div>Error loading movies: {error}</div>;

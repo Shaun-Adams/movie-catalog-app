@@ -87,7 +87,6 @@ const MovieCard = ({ movie }) => {
                 onClick={handleWatchlistClick}
                 color={inWatchlist ? 'error' : 'inherit'}
             >
-                {/* Change icon based on whether the movie is in the watchlist */}
                 {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
             </IconButton>
             </CardActions>

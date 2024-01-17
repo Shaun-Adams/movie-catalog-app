@@ -1,10 +1,9 @@
-// src/components/PrivateRoute.js
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../services/AuthContext'; // Ensure you have this context
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../services/AuthContext';
 
 const PrivateRoute = ({children}) => {
-  const { currentUser } = useAuth(); // Assuming useAuth provides the current user
+  const { currentUser } = useAuth(); 
   return currentUser ? children : <Navigate to="/login" />;
 };
 

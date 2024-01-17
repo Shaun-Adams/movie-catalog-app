@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import MovieDetailLayout from '../components/layouts/MovieDetailLayout';
 import { fetchMovieById, fetchMovieTrailerById } from '../services/movieService';
-import DetailsGrid from '../components/layouts/DetailsGrid'; // Import the DetailsGrid component
+import DetailsGrid from '../components/layouts/DetailsGrid'; 
 
 function MovieDetails() {
   const { id } = useParams();

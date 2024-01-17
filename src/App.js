@@ -13,35 +13,19 @@ import { WatchlistProvider } from './components/WatchlistContext';
 function App() {
   return (
     <WatchlistProvider>
-    <FavoritesProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/movies" element={ 
-          <PrivateRoute>       
-            <MovieList />
-          </PrivateRoute>   
-        }/>
-        <Route path="/movie/:id" element={
-          <PrivateRoute>
-            <MovieDetails />
-          </PrivateRoute>
-        }/>
-        <Route path="/favorites" element={ 
-          <PrivateRoute>       
-            <Favorites />
-          </PrivateRoute>   
-        }/>
-        <Route path="/watchlist" element={ 
-          <PrivateRoute>       
-            <WatchList />
-          </PrivateRoute>   
-        }/>
-      </Routes>
-    </Router>
-    </FavoritesProvider>
+      <FavoritesProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/movies" element={<PrivateRoute><MovieList /></PrivateRoute>} />
+            <Route path="/movie/:id" element={<PrivateRoute><MovieDetails /></PrivateRoute>} />
+            <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
+            <Route path="/watchlist" element={<PrivateRoute><WatchList /></PrivateRoute>} />
+          </Routes>
+        </Router>
+      </FavoritesProvider>
     </WatchlistProvider>
   );
 }

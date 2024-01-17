@@ -1,4 +1,3 @@
-// SearchBar.jsx
 import React from 'react';
 import { InputBase, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';

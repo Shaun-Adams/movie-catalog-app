@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTubePlayer from '../YoutubePlayer';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { CardMedia } from '@mui/material';
 import { Star, Visibility } from '@mui/icons-material';
 

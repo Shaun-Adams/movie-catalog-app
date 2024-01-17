@@ -1,28 +1,27 @@
 import React, { useContext } from 'react';
 import { WatchlistContext } from '../components/WatchlistContext';
 import MovieCard from '../components/MovieCard';
-import MainLayout from '../components/layouts/MainLayout';
+import MovieDetailLayout from '../components/layouts/MovieDetailLayout';
 import { Grid } from '@mui/material';
-import SearchBar from '../components/SearchBar';
-import { Button, Avatar } from '@mui/material';
+import { Button} from '@mui/material';
 
 const Watchlist = () => {
     const { watchlist, toggleWatched } = useContext(WatchlistContext);
 
     return (
-        <MainLayout >
+        <MovieDetailLayout>
             <h1>My Watchlist</h1>
             <Grid container spacing={2}>
                 {watchlist.length > 0 ? (
-                    watchlist.map(movie => (
+                    watchlist.map((movie) => (
                         <Grid item xs={12} sm={6} md={4} lg={3} key={movie.id}>
-                            <div 
+                            <div
                                 style={{
                                     position: 'relative',
                                     borderRadius: '4px',
                                     padding: '8px',
                                     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                                    cursor: 'pointer'
+                                    cursor: 'pointer',
                                 }}
                             >
                                 {movie.watched && (
@@ -37,19 +36,18 @@ const Watchlist = () => {
                                             display: 'flex',
                                             justifyContent: 'center',
                                             alignItems: 'center',
-                                            zIndex: '1'
+                                            zIndex: '1',
                                         }}
-                                    >
-                                        
-                                    </div>
+                                    ></div>
                                 )}
-                                <MovieCard 
-                                    key={movie.id} movie={movie} 
+                                <MovieCard
+                                    key={movie.id}
+                                    movie={movie}
                                     style={{ opacity: movie.watched ? 0.7 : 1, zIndex: '0' }}
                                 />
-                                <Button 
+                                <Button
                                     onClick={() => toggleWatched(movie.id)}
-                                    style={{ 
+                                    style={{
                                         position: 'absolute',
                                         top: '8px',
                                         right: '8px',
@@ -60,18 +58,17 @@ const Watchlist = () => {
                                     {movie.watched ? (
                                         <span style={{ fontSize: '16px', color: 'white' }}>✓</span>
                                     ) : (
-                                        <span style={{ fontSize: '16px', color: 'white'}}>&#9744;</span>
+                                        <span style={{ fontSize: '16px', color: 'white' }}>&#9744;</span>
                                     )}
                                 </Button>
                             </div>
                         </Grid>
                     ))
                 ) : (
-                        <p>No movies in your watchlist.</p>
+                    <p>No movies in your watchlist.</p>
                 )}
             </Grid>
-        </MainLayout>
-        
+        </MovieDetailLayout>
     );
 };
 
