@@ -4,11 +4,16 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
+import WatchList from './pages/WatchList';
 import PrivateRoute from './components/PrivateRoute';
 import Favorites from './pages/Favorites';
+import { FavoritesProvider } from './components/FavoritesContext';
+import { WatchlistProvider } from './components/WatchlistContext';
 
 function App() {
   return (
+    <WatchlistProvider>
+    <FavoritesProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -29,13 +34,15 @@ function App() {
             <Favorites />
           </PrivateRoute>   
         }/>
-        <Route path="/movies" element={ 
+        <Route path="/watchlist" element={ 
           <PrivateRoute>       
-            <MovieList />
+            <WatchList />
           </PrivateRoute>   
         }/>
       </Routes>
     </Router>
+    </FavoritesProvider>
+    </WatchlistProvider>
   );
 }
 

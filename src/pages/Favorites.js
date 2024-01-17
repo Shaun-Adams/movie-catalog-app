@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 import { fetchMovies } from '../services/movieService';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/styles.css";
 import YouTube from 'react-youtube';
 import MovieCard from '../components/MovieCard';
+import { FavoritesContext } from '../components/FavoritesContext';
 import MainLayout from '../components/layouts/MainLayout';
 import { Grid } from '@mui/material';
 import SearchBar from '../components/SearchBar';
@@ -12,7 +13,7 @@ function Favorites () {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [query, setQuery] = useState('');
-  const [favorites, setFavorites] = useState([]);
+  const { favorites } = useContext(FavoritesContext);
 
 
   useEffect(() => {
@@ -29,11 +30,6 @@ function Favorites () {
       loadMovies();
     }
   }, [query]);
-
-  useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    setFavorites(storedFavorites);
-  }, []);
 
   const handleSearch = (event) => {
     setQuery(event.target.value); // Update the query state
@@ -53,7 +49,7 @@ function Favorites () {
             </Grid>
           ))
         ) : (
-          <div>No movies found</div>
+          <p>No favorite movies added yet.</p>
         )}
       </Grid>
     </MainLayout>
