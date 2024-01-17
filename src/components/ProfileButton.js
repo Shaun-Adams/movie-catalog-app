@@ -13,19 +13,15 @@ const ProfileButton = ({ user }) => {
                   <Button
                         sx={{ color: 'white', mr: 1 }}
                         startIcon={user ? <Avatar src={user.photoURL} /> : <AccountCircleIcon />}
-                        color="inherit"
-                    >
-                    <Button
                         onClick={signOut}
                         color="inherit"
                     >
                         Logout
-                    </Button>
                   </Button>
                 </>
             ) : (
                 <Button
-                    onClick={() => window.location.href = `${window.location.origin}/movie-catalog-app/login`}
+                    onClick={() => window.location.href = `${window.location.origin}/movie-catalog-app/#/login`}
                     color="inherit"
                 >
                     Login

@@ -26,7 +26,7 @@ function Login() {
         password,
       });
       if (error) throw error;
-      window.location.href = `${window.location.origin}/movie-catalog-app/movies`;
+      window.location.href = `${window.location.origin}/movie-catalog-app/#/movies`;
     } catch (error) {
       setLoginError(error.message);
     } finally {
