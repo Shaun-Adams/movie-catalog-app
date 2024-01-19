@@ -4,7 +4,6 @@ import { supabase } from '../services/supabaseClient';
 import {
   Avatar,
   Button,
-  CssBaseline,
   TextField,
   Grid,
   Box,
@@ -47,27 +46,25 @@ function Register() {
         alert('Not a valid email address');
       }
     } catch (error) {
-      console
-      .error('Registration error:', error.message);
       setRegisterError(error.message);
-      } finally {
+    } finally {
       setLoading(false);
-      }
-      };
+    }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <Paper
-          elevation={3}
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: 2,
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+        elevation={3}
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: 2,
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -79,40 +76,44 @@ function Register() {
           </Typography>
         )}
         <Box component="form" onSubmit={handleRegister} noValidate sx={{ mt: 1 }}>
-        <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="given-name"
+                name="firstName"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="family-name"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            </Grid>
           </Grid>
           <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          label="Email Address"
-          name="email"
-          autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -148,8 +149,8 @@ function Register() {
           </Grid>
         </Box>
       </Paper>
-</Container>
-);
+    </Container>
+  );
 }
 
 export default Register;

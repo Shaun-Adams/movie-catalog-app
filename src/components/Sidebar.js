@@ -1,11 +1,11 @@
 import React from 'react';
 import { List, ListItem, ListItemIcon, ListItemText, IconButton, Divider, Box, Grid } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import HomeIcon from '@mui/icons-material/Home';
-import FavoriteIcon from '@mui/icons-material/Favorite'; // Import for Favorites icon
-import WatchLaterIcon from '@mui/icons-material/WatchLater'; // Import for Watch List icon
+import FavoriteIcon from '@mui/icons-material/Favorite'; 
+import WatchLaterIcon from '@mui/icons-material/WatchLater'; 
+import MovieIcon from '@mui/icons-material/Movie'; 
 import { useLocation, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.jpeg'; // Replace with your logo component or image
+import logo from '../assets/logo.jpeg';
 
 const Sidebar = ({ handleDrawerToggle }) => {
     const location = useLocation();
@@ -15,7 +15,7 @@ const Sidebar = ({ handleDrawerToggle }) => {
 
     const handleNavigation = (path) => {
         navigate(path);
-        handleDrawerToggle && handleDrawerToggle(); // Call the function if it exists
+        handleDrawerToggle && handleDrawerToggle(); 
     };
 
     return (
@@ -29,7 +29,9 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     minHeight: 64,
                 }}
             >
-                <img src={logo} alt="Logo" style={{ maxHeight: '50px' }} />
+                <a href="https://shaun-adams.github.io/movie-catalog-app/#/movies" style={{ textDecoration: 'none' }}>
+                    <img src={logo} alt="Logo" style={{ maxHeight: '50px', borderRadius: '50%' }} />
+                </a>
             </Box>
             <Divider />
             <List>
@@ -39,9 +41,9 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     onClick={() => handleNavigation('/movies')}
                 >
                     <ListItemIcon>
-                        <HomeIcon style={{ color: '#fff' }} />
+                        <MovieIcon style={{ color: '#fff' }} /> {/* Use the MovieIcon */}
                     </ListItemIcon>
-                    <ListItemText primary="Home" />
+                    <ListItemText primary="Movies" />
                 </ListItem>
                 <ListItem
                     button
@@ -63,7 +65,6 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     </ListItemIcon>
                     <ListItemText primary="Watch List" />
                 </ListItem>
-                {/* Add more items here */}
             </List>
             <Box sx={{ flexGrow: 1 }} />
             <Divider />
@@ -75,8 +76,8 @@ const Sidebar = ({ handleDrawerToggle }) => {
                     position: 'absolute',
                     bottom: 0,
                     width: '100%',
-                    border: '2px solid orange', // Updated border style to dark gray
-                    backgroundColor: 'orange', // Updated background color to dark gray
+                    border: '2px solid orange', 
+                    backgroundColor: 'orange', 
                 }}
             >
                 <IconButton onClick={handleDrawerToggle}>

@@ -1,5 +1,3 @@
-// src/services/AuthContext.js
-import { Session, User } from '@supabase/supabase-js';
 import { useContext, useState, useEffect, createContext } from 'react';
 import {supabase} from './supabaseClient';
 

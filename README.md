@@ -1,3 +1,15 @@
+# Login
+
+When trying; If the error message says email limit exceeded
+
+Login with the following details:
+
+Email: ```shaunsiadams@gmail.com```
+
+Password: ```:VWSAU:eX5_LaGz```
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

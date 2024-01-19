@@ -3,16 +3,12 @@ import { supabase } from '../services/supabaseClient';
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
 function Login() {
@@ -30,10 +26,8 @@ function Login() {
         password,
       });
       if (error) throw error;
-      // Redirect user to homepage or dashboard on successful login
-      window.location.href = '/movies';
+      window.location.href = `${window.location.origin}/movie-catalog-app/#/movies`;
     } catch (error) {
-      console.error('Login error:', error.message);
       setLoginError(error.message);
     } finally {
       setLoading(false);
@@ -42,16 +36,16 @@ function Login() {
 
   return (
     <Container component="main" maxWidth="xs">
-        <Paper
-          elevation={3}
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            padding: 2,
-          }}
-        >
+      <Paper
+        elevation={3}
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: 2,
+        }}
+      >
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
@@ -100,17 +94,12 @@ function Login() {
             {loading ? 'Signing in...' : 'Sign In'}
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link to="/forgot-password" variant="body2"> {/* Use react-router-dom's Link component */}
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
-              <Link to="/register" style={{ textDecoration: 'none' }}> {/* And here */}
-              <Typography variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Typography>
-            </Link>
+              <Link to="/register" style={{ textDecoration: 'none' }}>
+                <Typography variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Typography>
+              </Link>
             </Grid>
           </Grid>
         </Box>
@@ -120,10 +109,3 @@ function Login() {
 }
 
 export default Login;
-
-    // <div>
-    //   <h2>Register</h2>
-    //   <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-    //   <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-    //   <button onClick={handleRegister}>Register</button>
-    // </div>

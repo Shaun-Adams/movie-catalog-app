@@ -1,20 +1,35 @@
-// MovieCard.jsx
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { FavoritesContext } from './FavoritesContext';
 import { Card, CardMedia, CardContent, CardActions, Button, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useNavigate, Link } from 'react-router-dom';
+import {Link } from 'react-router-dom';
+import { WatchlistContext } from './WatchlistContext';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 const MovieCard = ({ movie }) => {
-    const navigate = useNavigate();
+    const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
     const [isFavorite, setIsFavorite] = useState(false);
+    const { watchlist, addToWatchlist, removeFromWatchlist } = useContext(WatchlistContext);
+    const inWatchlist = watchlist.some(watchlistMovie => watchlistMovie.id === movie.id);
 
-    const handleDetailsClick = () => {
-        navigate(`/movie/${movie.id}`);
-    };
+
+    useEffect(() => {
+        setIsFavorite(favorites.some(fav => fav.id === movie.id));
+    }, [favorites, movie.id]);
 
     const handleFavoriteClick = () => {
-        setIsFavorite(!isFavorite);
+        if (isFavorite) {
+            removeFavorite(movie.id);
+        } else {
+            addFavorite(movie);
+        }
     };
+
+    const handleWatchlistClick = () => {
+        inWatchlist ? removeFromWatchlist(movie.id) : addToWatchlist(movie
+);
+};
 
     return (
         <Card
@@ -67,6 +82,13 @@ const MovieCard = ({ movie }) => {
                         Details
                     </Button>
                 </Link>
+                <IconButton
+                aria-label="add to watchlist"
+                onClick={handleWatchlistClick}
+                color={inWatchlist ? 'error' : 'inherit'}
+            >
+                {inWatchlist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}
+            </IconButton>
             </CardActions>
         </Card>
     );

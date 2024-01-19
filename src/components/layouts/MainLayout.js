@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, CssBaseline, Drawer, ThemeProvider } from '@mui/material';
 import TopNavBar from '../TopNavBar';
 import Sidebar from '../Sidebar';
-import theme from './Theme'; // Import the theme
+import theme from './Theme'; 
 
 const drawerWidth = 240;
 

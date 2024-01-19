@@ -3,10 +3,10 @@ import YouTube from 'react-youtube';
 
 const YouTubePlayer = ({ videoId }) => {
   const opts = {
-    height: '100%', // Set height to 100% for responsiveness
-    width: '100%', // Set width to 100% for responsiveness
+    height: '100%', 
+    width: '100%', 
     playerVars: {
-      autoplay: 0, // Autoplay the video
+      autoplay: 0, 
     },
   };
 

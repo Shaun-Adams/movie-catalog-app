@@ -1,9 +1,8 @@
-// TopNavBar.jsx
 import React from 'react';
 import { AppBar, Toolbar, IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchBar from './SearchBar'; // Make sure this is the correct path
-import ProfileButton from './ProfileButton'; // Make sure this is the correct path
+import SearchBar from './SearchBar';
+import ProfileButton from './ProfileButton'; 
 
 
 const TopNavBar = ({ drawerWidth, handleDrawerToggle , onSearch }) => {
@@ -13,7 +12,7 @@ const TopNavBar = ({ drawerWidth, handleDrawerToggle , onSearch }) => {
             sx={{
                 width: { sm: `calc(100% - ${drawerWidth}px)` },
                 ml: { sm: `${drawerWidth}px` },
-                bgcolor: '#222e50' // Set the background color to #222e50
+                bgcolor: '#222e50' 
             }}
         >
             <Toolbar>

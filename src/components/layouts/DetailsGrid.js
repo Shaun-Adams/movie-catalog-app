@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTubePlayer from '../YoutubePlayer';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { CardMedia } from '@mui/material';
 import { Star, Visibility } from '@mui/icons-material';
 
@@ -8,12 +8,8 @@ const DetailsGrid = ({ videoId, movieDetails }) => {
   return (
     <Grid container spacing={2} style={{ height: '100%', overflow: 'hidden' }}>
       {/* Left side with YouTube player */}
-      <Grid item xs={12} sm={8}>
+      <Grid spacing={2} item xs={12} sm={8} >
         <YouTubePlayer videoId={videoId} />
-      </Grid>
-
-      {/* Right side with movie details */}
-      <Grid item xs={12} sm={4}>
         <div
           style={{
             overflowY: 'auto',
@@ -37,12 +33,7 @@ const DetailsGrid = ({ videoId, movieDetails }) => {
             >
               {movieDetails.title}
             </Typography>
-            <CardMedia
-              component="img"
-              sx={{ height: '40%', objectFit: 'contain' }}
-              image={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-              alt={movieDetails.title}
-            />
+
             <Typography
               variant="body1"
               style={{
@@ -113,6 +104,79 @@ const DetailsGrid = ({ videoId, movieDetails }) => {
                 {movieDetails.vote_average}
               </Typography>
             </div>
+          </div>
+        </div>
+      </Grid>
+
+      {/* Right side with movie details */}
+      <Grid item xs={12} sm={4}>
+        <div
+          style={{
+            overflowY: 'auto',
+            maxHeight: '100%',
+            backgroundColor: '#333333',
+            padding: '16px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div>
+            <CardMedia
+              component="img"
+              sx={{ height: '35%', objectFit: 'contain' }}
+              image={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+              alt={movieDetails.title}
+            />
+            <Typography
+              variant="body1"
+              style={{
+                marginTop: '16px',
+                color: '#FFFFFF',
+                fontFamily: 'Arial',
+                fontWeight: 'bold',
+              }}
+            >
+              Tag-line: {movieDetails.tagline}
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                marginTop: '16px',
+                color: '#FFFFFF',
+                fontFamily: 'Arial',
+                fontWeight: 'bold',
+              }}
+            >
+                Status: {movieDetails.status}
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                marginTop: '16px',
+                color: '#FFFFFF',
+                fontFamily: 'Arial',
+                fontWeight: 'bold',
+              }}
+            >
+              Countries:{' '}
+              {movieDetails.production_countries.map((production_countries) => (
+                <span style={{ margin: '0 5px' }} key={movieDetails.id}>
+                  {production_countries.name}
+                </span>
+              ))}
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                marginTop: '16px',
+                color: '#FFFFFF',
+                fontFamily: 'Arial',
+                fontWeight: 'bold',
+              }}
+            >
+                Duration: {movieDetails.runtime} Hr
+            </Typography>
           </div>
         </div>
       </Grid>
