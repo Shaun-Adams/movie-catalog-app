@@ -14,6 +14,12 @@ import {
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
+function isValidEmail(email) {
+  // Regular expression for basic email validation
+  var regex = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/i;
+  return regex.test(email) && email.endsWith('.com');
+}
+
 function Register() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -34,8 +40,12 @@ function Register() {
         password,
       });
       if (error) throw error;
-      alert('Registration successful. Check your email for confirmation!');
-      navigate('/login'); // Use navigate instead of window.location.href
+      if (isValidEmail(email)) {
+        alert('Registration successful. Check your email for confirmation!');
+        navigate('/login');
+      } else {
+        alert('Not a valid email address');
+      }
     } catch (error) {
       console
       .error('Registration error:', error.message);
