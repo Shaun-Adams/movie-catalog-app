@@ -5,6 +5,7 @@ import {supabase} from './supabaseClient';
 const AuthContext = createContext({ session: null, user: null, signOut: () => {} });
 
 
+
 export function useAuth() {
   return useContext(AuthContext);
 }

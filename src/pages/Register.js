@@ -32,26 +32,30 @@ function Register() {
     e.preventDefault();
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signUp({
-        name,
-        surname,
-        email,
-        password,
-      });
-      if (error) throw error;
       if (isValidEmail(email)) {
+        const { error } = await supabase.auth.signUp({
+          name,
+          surname,
+          email,
+          password,
+          options: {
+            emailRedirectTo: 'https://shaun-adams.github.io/movie-catalog-app/#/login'
+          }
+        });
+        if (error) throw error;
         alert('Registration successful. Check your email for confirmation!');
         navigate('/login');
       } else {
         alert('Not a valid email address');
-      }
+      }     
     } catch (error) {
       setRegisterError(error.message);
     } finally {
       setLoading(false);
     }
-  };
 
+  };
+  
   return (
     <Container component="main" maxWidth="xs">
       <Paper
