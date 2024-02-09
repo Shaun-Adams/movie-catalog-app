@@ -7,7 +7,7 @@ Employed React Router for seamless navigation, implemented robust error handling
 
 ## View hosted App
 
-[Flicks movie catalog:](https://shaun-adams.github.io/movie-catalog-app/#)
+Visit: [Flicks movie catalog:](https://shaun-adams.github.io/movie-catalog-app/#)
 - logo and favi-con personally made
 - Remember after registering an email verification code will be sent to varify your account, so ensure you use a valid email address you have access to :)
 - Was a bit lazy to create a forget password page (I'm sorry :'() will do better next time)
