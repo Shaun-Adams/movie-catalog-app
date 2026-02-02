@@ -21,7 +21,7 @@
     "react-scripts": "^5.0.1",
     "react-youtube": "^10.1.0",
     "styled-components": "^6.1.8",
-    "supabase": "^1.131.4",
+    "supabase": "^2.72.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
